@@ -1,0 +1,13 @@
+# Quantum Computational Mechanics & Physics Simulations
+
+A collection of pure-Python simulation engines designed to model non-linear physical systems, thermodynamic distributions, and quantum mechanical principles.
+
+## ⚛️ Featured Model: Quantum Gate Probability Mapper (`quantum_coin_flip.py`)
+This script simulates the behavior of a single qubit passing through a **Hadamard Gate** to induce quantum superposition. 
+
+### Mathematical Framework
+The simulation maps the transition of a base state $|0\rangle$ into a balanced probability amplitude vector:
+$$\psi = \frac{1}{\sqrt{2}}|0\rangle + \frac{1}{\sqrt{2}}|1\rangle$$
+
+- **Superposition Simulation:** Uses state amplitudes ($0.7071$) to evaluate the continuous 50/50 probability distribution before a physical measurement is taken.
+- **Wave Function Collapse:** Simulates continuous measurement constraints across 10,000 iterative trials, tracking empirical variance and systemic divergence from theoretical quantum ideals.
