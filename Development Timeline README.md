@@ -1,0 +1,1 @@
+Project Lifecycle: This simulation model was developed over a 3-month research and iteration cycle, transitioning from a basic conceptual script into a physics-backed biophysics engine using Stokes' Law of friction to determine cellular delivery efficiency.
