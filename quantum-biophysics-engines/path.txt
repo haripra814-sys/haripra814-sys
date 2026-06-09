@@ -1,0 +1,9 @@
+[ GITHUB: PRANAV ]
+                              │
+       ┌──────────────────────┴──────────────────────┐
+       ▼                                             ▼
+[ REPOSITORY: quantitative_dashboard ]     [ REPOSITORY: physical_science_simulations ]
+• Focus: Biometrics & UI Systems            • Focus: Biophysics & Computational Modeling
+• Stack: Reflex, Frontend/Backend State    • Stack: Pure Python, Math, Physics Engines
+• Main File: main.py                       • Main File: nanobot_teleportation.py
+                                           • Secondary File: quantum_coin_flip.py
