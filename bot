@@ -1,0 +1,77 @@
+import turtle
+import time
+import math
+
+class PhysicsRobot:
+    def __init__(self):
+        # Setup the screen
+        self.screen = turtle.Screen()
+        self.screen.title("2D Physics Robot Simulation")
+        self.screen.bgcolor("white")
+        self.screen.setup(width=800, height=600)
+        self.screen.tracer(0) # Turns off automatic animation updates for smooth rendering
+
+        # Setup the robot body
+        self.robot = turtle.Turtle()
+        self.robot.shape("triangle")
+        self.robot.color("blue")
+        self.robot.penup()
+
+        # Physics variables
+        self.x = 0.0          # Position X (meters)
+        self.y = 0.0          # Position Y (meters)
+        self.heading = 90.0   # Angle (degrees)
+        
+        self.velocity = 0.0     # Linear velocity (m/s)
+        self.acceleration = 0.1 # Constant forward acceleration rate (m/s^2)
+        self.friction = 0.98    # Simple drag/friction coefficient to limit max speed
+        self.angular_velocity = 0.0 # Turning speed (degrees/s)
+
+        # Keyboard bindings
+        self.screen.listen()
+        self.screen.onkeypress(self.accelerate, "Up")
+        self.screen.onkeypress(self.brake, "Down")
+        self.screen.onkeypress(self.turn_left, "Left")
+        self.screen.onkeypress(self.turn_right, "Right")
+
+    def accelerate(self):
+        self.velocity += self.acceleration
+
+    def brake(self):
+        self.velocity -= self.acceleration
+
+    def turn_left(self):
+        self.angular_velocity = 5.0
+
+    def turn_right(self):
+        self.angular_velocity = -5.0
+
+    def update_physics(self):
+        # 1. Apply angular updates (turning)
+        self.heading += self.angular_velocity
+        self.robot.setheading(self.heading)
+        # Reset turning speed so it doesn't spin infinitely unless held
+        self.angular_velocity *= 0.5 
+
+        # 2. Apply linear updates (movement)
+        self.velocity *= self.friction # Apply natural drag
+        
+        # Convert heading angle to radians for trigonometry calculations
+        rad = math.radians(self.heading)
+        
+        # Calculate change in position based on velocity vector components
+        self.x += self.velocity * math.cos(rad)
+        self.y += self.velocity * math.sin(rad)
+
+        # 3. Update the visual asset position
+        self.robot.goto(self.x, self.y)
+
+    def run(self):
+        while True:
+            self.update_physics()
+            self.screen.update()
+            time.sleep(0.01) # Approx 100 FPS simulation loop
+
+if __name__ == "__main__":
+    sim = PhysicsRobot()
+    sim.run()
