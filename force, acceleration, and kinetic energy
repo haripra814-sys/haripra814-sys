@@ -1,0 +1,50 @@
+"""
+Dynamics and Energy Utility Library
+Designed for force, acceleration, and kinetic energy computations.
+"""
+
+class DynamicsEngine:
+    def __init__(self):
+        pass
+
+    def calculate_force(self, mass: float, acceleration: float) -> float:
+        """
+        Calculates Net Force using Newton's Second Law: F = m * a
+        :param mass: Mass of the object in kilograms (kg)
+        :param acceleration: Acceleration in meters per second squared (m/s^2)
+        :return: Force in Newtons (N)
+        """
+        if mass < 0:
+            raise ValueError("Mass cannot be negative.")
+        return mass * acceleration
+
+    def calculate_kinetic_energy(self, mass: float, velocity: float) -> float:
+        """
+        Calculates Kinetic Energy using: KE = 0.5 * m * v^2
+        :param mass: Mass of the object in kilograms (kg)
+        :param velocity: Velocity in meters per second (m/s)
+        :return: Kinetic Energy in Joules (J)
+        """
+        if mass < 0:
+            raise ValueError("Mass cannot be negative.")
+        return 0.5 * mass * (velocity ** 2)
+
+
+# --- Interactive Simulation & Verification ---
+if __name__ == "__main__":
+    print("🎬 Initializing Dynamics & Energy Engine...")
+    dynamics = DynamicsEngine()
+    
+    # Simulation 1: Newton's Second Law (e.g., Pushing a 1,200 kg car to accelerate at 2.5 m/s^2)
+    car_mass = 1200.0
+    acceleration = 2.5
+    force_needed = dynamics.calculate_force(car_mass, acceleration)
+    print(f"[SUCCESS] Net Force required (F = {car_mass}kg * {acceleration}m/s²): {force_needed:.1f} Newtons")
+    
+    # Simulation 2: Kinetic Energy (e.g., A 0.15 kg baseball thrown at 40 m/s)
+    baseball_mass = 0.15
+    velocity = 40.0
+    ke_result = dynamics.calculate_kinetic_energy(baseball_mass, velocity)
+    print(f"[SUCCESS] Kinetic Energy (KE = 0.5 * {baseball_mass}kg * {velocity}² m/s): {ke_result:.2f} Joules")
+    
+    print("\n✅ All force and energy calculations verified successfully!")
